@@ -1,0 +1,28 @@
+<!-- templates/aws/show.html -->
+{% extends "aws/layout.html" %} 
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block title %}{{ content['title'] }}{% endblock %}
+ 
+{% block header %}{{ content['title'] }}{% endblock %}
+
+{% block content %}
+<br/>
+<div class="gcp-box">
+    <div class="entry">
+        {{ content['entry'].replace('  \n','<br/>')|safe }}
+    </div>
+    <br/>
+    <br/>
+    <div class="bar">
+            <span class="update-date">
+                公開日: {{ content['released_at'] }}
+            </span>
+        </div>
+
+</div>
+      
+{% endblock %}

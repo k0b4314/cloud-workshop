@@ -1,0 +1,32 @@
+<!-- templates/gcp/index.html -->
+{% extends "gcp/layout.html" %} 
+
+{% block title %}Google Cloud Platform{% endblock %}
+ 
+{% block header %}
+    Google Cloud Platform
+{% endblock %}
+
+{% block content %}
+<!-- Card -->
+<ul class="card-list">
+    {% for content in contents_list %}
+    <section class="card" onclick="location.href='{{ content['id'] }}'">
+        <div class="card-content">
+            <h1 class="card-title">{{ content['title'] }}</h1>
+            <div class="card-text">
+                    {{ content['entry'][:50] }}
+            </div>
+        </div>
+        <div class="card-link">
+            <p class="card-date">{{ content['released_at'] }}</p>
+            <p class="card-author">{{ content['author_names'] }}</p>
+        </div>
+    </section>
+    {% endfor %}
+</ul>
+<!-- card -->
+
+{% endblock %}
+
+

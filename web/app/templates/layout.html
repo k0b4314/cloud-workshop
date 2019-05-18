@@ -1,0 +1,43 @@
+<!-- templates/layout.html -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        {% block head %}
+        <link rel="stylesheet" href="{{url_for('static', filename='css/layout.css')}}">
+        <script src="{{url_for('static', filename='js/layout.js')}}"></script>
+        <title>{% block title %}{% endblock %} - Flask</title>
+        {% endblock %}
+    </head>
+    <body>
+     <!-- 共通ヘッダ -->
+    <header>
+        <div id="nav-drawer">
+            <input id="nav-input" type="checkbox" class="nav-unshown">
+            <label id="nav-open" for="nav-input"><span></span></label>
+            <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+            <!-- ヘッダ中身 -->
+            <span id="header-title">
+                Cloud Workshop -  {% block header %}{% endblock %}
+            </span>
+
+            <!-- サイドバー -->
+            <div id="nav-content">
+                {{ side_menu | safe }}
+            </div>
+        </div>
+    </header>
+    <!-- コンテンツ -->
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <!-- 共通フッタ -->
+    <footer>
+        {% block footer %}
+            &copy; Copyright 2019 by moon0711mukh
+        {% endblock %}        
+    </footer>
+    
+    </body>
+</html>
