@@ -35,5 +35,11 @@ gcloud docker -- push gcr.io/${PROJECT_ID}/${IMAGE}
 
 Cloud Runにデプロイする
 
+```
+gcloud beta run deploy test-web-app \
+  --image=gcr.io/${PROJECT_ID}/${IMAGE} \
+  --region=us-central1
+```
+
 # Amazon Web Service
 書いてください
