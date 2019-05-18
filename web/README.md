@@ -55,6 +55,18 @@ VMインスタンスの外部IPにアクセスする。
 
 ## App Engine
 
+```
+#Cloud Shell
+
+# ソースファイルを取得
+git clone https://github.com/moon0711mukh/cloud-workshop.git
+cd cloud-workshop/web
+
+ gcloud app deploy
+
+
+```
+
 
 ## Cloud Run
 

@@ -1,5 +1,5 @@
 
 runtime: python37
 env: standard
-service: test-gae-flask
+service: default
 entrypoint: gunicorn --bind :$PORT --workers 1 --threads 8 app.app:app
