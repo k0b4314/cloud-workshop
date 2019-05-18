@@ -1,5 +1,5 @@
 '''
-Webアプリケーション起動元
+ローカル環境　Webアプリケーション起動元
 '''
 import os
 import app.app as app
