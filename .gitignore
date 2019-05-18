@@ -1,0 +1,2 @@
+web/app/__pycache__/*.pyc
+web/app/*/__pycache__/*.pyc
