@@ -94,4 +94,78 @@ gcloud beta run deploy test-web-app \
 Cloud RunのIPアドレスにアクセスする。
 
 # Amazon Web Service
-書いてください
+
+## Amazon Elastic Computing Cloud (EC2)
+
+EC2でのやり方（Docker）を記載する。
+
+## AWS Elastic Beanstalk
+
+■準備
+Systems Managerのセッションマネージャが使用できるEC2インスタンス（Amazon Linux 2などはデフォルトで使用可能）
+Beanstalk用のサービスロール、および作成されるインスタンス用のロール
+
+セッションマネージャにてEC2インスタンスへ接続
+必要なパッケージのインストール
+
+```
+# yum -y install git gcc zlib-devel libffi-devel openssl-devel
+```
+
+EB CLIのインストールと設定
+
+```
+# git clone https://github.com/aws/aws-elastic-beanstalk-cli-setup.git
+# ./aws-elastic-beanstalk-cli-setup/scripts/bundled_installer
+# echo 'export PATH="/root/.ebcli-virtual-env/executables:$PATH"' >> ~/.bash_profile && source ~/.bash_profile
+```
+
+作業ディレクトリの作成とソースの取得
+```
+# mkdir -p ~/workspace/
+# cd ~/workspace/
+# git clone https://github.com/moon0711mukh/cloud-workshop.git
+# cd cloud-workshop/web/app
+```
+
+
+プロジェクトの初期化
+```
+# eb init
+```
+
+
+ファイルの移動
+```
+# mv ../requirements.txt .
+````
+
+
+Beanstalk用にアプリケーションを準備
+
+* app.py
+* view/aws.py
+* view/gcp.py
+* view/inde.py
+⇒「app.view」を「view」へ変更
+
+* app.py
+⇒「#ルーティング設定」以下の「app」を「application」へ変更
+
+
+環境設定ファイルの作成
+```
+# mkdir .ebextensions
+# vi .ebextensions/app.config
+---app.config---
+option_settings:
+  aws:elasticbeanstalk:container:python:
+    WSGIPath: app.py
+----------------
+```
+
+
+環境の作成
+```
+# eb create --single --service-role <サービスロールARN> --instance_profile <インスタンスプロファイルARN>
+```
